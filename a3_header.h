@@ -20,7 +20,7 @@ private:
 
 	Date date;
 	double amount, balance;
-	string tran_type;
+	string tran_type; //! Type of transaction
 	
 
 public:
@@ -311,50 +311,158 @@ public:
 	const double CHECK_INTEREST = 1;    //! setting checking interest rate
 	const double CHECK_CHARGE = 2;      //! setting checking charge
 	const int OVERDRAFT_PENALTY = 25;   //! setting overdraft penalty
-
+    
+	/**
+	1) Purpose: function for getting savings interest.
+	2) Parameters: None
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	double get_sav_int();
+
+	/**
+	1) Purpose: function for getting checking interest.
+	2) Parameters: None
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	double get_chec_int();
+
+	/**
+	1) Purpose: function for getting checking charge.
+	2) Parameters: None
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	double get_chec_chrg();
+
+	/**
+	1) Purpose: function for getting overdraft penalty.
+	2) Parameters: None
+	3) Return type: int
+	4) Side Effect: None
+	*/
 	int get_od_plty();
 };
 
-class Account {
+
+class Account 
+{
 private:
 
 	double balance;
 	Customer *customer;
 	string account_type;
-	vector<Transaction*> trans;
-	int transac_count;
+	vector<Transaction*> trans; //! List of transactions
+	int transac_count;  //! Transaction count
 	int account_number;
 	
 
 
 public:
+    
+	/**
+	1) Purpose: Constructor to initialize an account based on its type with relevant information.
+	2) Parameters: acc_num(int), acc_type(string)
+	3) Return type: None
+	4) Side Effect: None
+	*/
 	Account(int &acc_num,string &acc_type);
-
+    
+	/**
+	1) Purpose: Gets account type i.e. savings or checking
+	2) Parameters: None
+	3) Return type: string
+	4) Side Effect: None
+	*/
 	string get_account_type();
 
-
+    /**
+	1) Purpose: sets balance in the account based on user input.
+	2) Parameters: bal(double)
+	3) Return type: void
+	4) Side Effect: None
+	*/
 	void set_balance(double& bal);
 
-
+    /**
+	1) Purpose: Gets account number from the user.
+	2) Parameters: None
+	3) Return type: int
+	4) Side Effect: None
+	*/
 	int get_account_number();
-
+    
+	/**
+	1) Purpose: Gets balance from the user inputted account number.
+	2) Parameters: None
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	double get_balance();
 
+    /**
+	1) Purpose: Set the customer associated with the account
+	2) Parameters: customer(Customer)
+	3) Return type: void
+	4) Side Effect: None
+	*/
 	void set_customer(Customer *customer_);
-
+    
+	/**
+	1) Purpose: Abstract function to add interest to the account
+	2) Parameters: 
+	3) Return type: void
+	4) Side Effect: None
+	*/
 	virtual void add_interest()= 0;
+
+	/**
+	1) Purpose: Abstract function to add deposit to the account
+	2) Parameters: amt(double), date(Date)
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	virtual double deposit(double amt, Date date) = 0;
+
+	/**
+	1) Purpose: Abstract function to perform withdrawal from the account
+	2) Parameters: amt(double), date(Date)
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	virtual double withdrawal(double amt, Date date) = 0;
-
+    
+	/**
+	1) Purpose: Gets the customer associated with the account
+	2) Parameters: None
+	3) Return type: None
+	4) Side Effect: None
+	*/
 	Customer* get_customer();
-
+    
+	/**
+	1) Purpose: adds a transaction to the account 
+	2) Parameters: tran(Transaction)
+	3) Return type: void
+	4) Side Effect: None
+	*/
 	void add_trans(Transaction *tran);
-
+    
+	/**
+	1) Purpose: Gets a list of transactions
+	2) Parameters: None
+	3) Return type: vector
+	4) Side Effect: None
+	*/
 	vector<Transaction*> get_trans();
-
+    
+	/**
+	1) Purpose: Gets a list of transactions
+	2) Parameters: None
+	3) Return type: vector
+	4) Side Effect: None
+	*/
 	string to_string() const;
 
 };
