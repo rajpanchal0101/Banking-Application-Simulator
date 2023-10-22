@@ -202,33 +202,38 @@ int Account::get_account_number()
 		return account_number;
 }
 
+// Get the account balance
 double Account::get_balance()
 {
 		return balance;
 }
 
+// Set the customer associated with the account
 void Account::set_customer(Customer *customer_) 
 {
 		customer = customer_;
 }
 
 
-
+// Get the customer associated with the account
 Customer* Account::get_customer()
 {
 		return customer;
 }
 
+// Add a transaction to the account
 void Account::add_trans(Transaction *tran) 
 {
 		trans.push_back(tran);
 }
 
+// Get the list of transactions for the account
 vector<Transaction*> Account::get_trans() 
 {
 		return trans;
 }
 
+// Convert Account object to a formatted string
 string Account::to_string() const
 {       stringstream str;
         str << "Account : " << account_number << endl
@@ -240,17 +245,18 @@ string Account::to_string() const
 }
 
 
-
+// Savings_Account class constructor
 Savings_Account::Savings_Account(int& acc_num, string& acc_type) : Account(acc_num, acc_type) 
-{
+{       
+	    // Initialize savings account properties
 		balance = 0;
 		l_trans_date = nullptr;
 }
 
-
+// Deposit money into a savings account
 double Savings_Account::deposit(double amt, Date date) 
 {
-
+        // Checks if the transaction date is valid
 		if (!get_trans().empty()) { 
 			l_trans_date = get_trans().back();
 			l_date = l_trans_date->get_date();
@@ -266,7 +272,7 @@ double Savings_Account::deposit(double amt, Date date)
 		return balance;
 }
     
-	
+// Add interest to the savings account
 void Savings_Account::add_interest()
  {
 		time_t now = time(0);
@@ -282,7 +288,7 @@ void Savings_Account::add_interest()
 		add_trans(new Transaction("INT CR", interest_amt, balance, date));
 }
 
-
+// Withdraw money from a savings account
 double Savings_Account::withdrawal(double amt,Date date) 
 {
 		balance = get_balance();
@@ -314,15 +320,17 @@ double Savings_Account::withdrawal(double amt,Date date)
 }
 
 
+// Checking_Account class constructor
 Checking_Account::Checking_Account( int& acc_num, string& acc_type) : Account( acc_num, acc_type)
-{
+{       
+	    // Initialize checking account properties
 		balance = 0;
 		l_trans_date = nullptr;
-		/*interest_rate = get_customer()->get_chec_int();
-		chk_chg_rate = get_customer()->get_chec_chrg();*/
+		
 }
 
 
+// Deposit money into a checking account
 double Checking_Account::deposit(double amt, Date date) 
 {
 		if (!get_trans().empty()) {
@@ -340,6 +348,7 @@ double Checking_Account::deposit(double amt, Date date)
 		return balance;
 }
 
+// Add interest to the checking account
 void Checking_Account::add_interest()
 {
 		time_t now = time(0);
@@ -355,6 +364,7 @@ void Checking_Account::add_interest()
 		add_trans(new Transaction("INT CR", interest_amt, balance, date));
 }
 
+// Withdraw money from a checking account
 double Checking_Account::withdrawal(double amt, Date date) 
 {
 		balance = get_balance();
@@ -385,9 +395,10 @@ double Checking_Account::withdrawal(double amt, Date date)
 		}
 }
 
-
+// Bank class constructor
 Bank::Bank() 
-{   
+{       
+	    // Initialize bank properties
 		accountNumber = -1;
 		customerNumber = -1;
 		day = 0;
@@ -397,9 +408,10 @@ Bank::Bank()
 		
 }
 
+// Add a new customer account
 int Bank::add_account(string& name, string& address, string& telephoneNumber, int& age, int& accType, int& custType)
 {
-
+        // Create a new account based on customer and account type
 		Account* newAccount = nullptr;
 		string cust_type, accountType;
 		customerNumber++;
@@ -433,13 +445,16 @@ int Bank::add_account(string& name, string& address, string& telephoneNumber, in
 		}
 }
 
-
+// Make a withdrawal from a specific account
 void Bank::make_withdrawal(int& accountNumber, double& amt, string &dt) 
-{
+{       
+	    // Parse the date and create a Date object
 		month = stoi(dt.substr(5, 2));
 		day = stoi(dt.substr(8, 2));
 		year = stoi(dt.substr(0, 4));
 		Date date(day, month, year);
+
+		// Check if the account number is valid
 		if (accountNumber >= 0 and accountNumber <= (int)accounts.size() - 1) {
 			double balance = accounts[accountNumber]->withdrawal(amt, date);
 			if (balance != -1)
@@ -454,6 +469,7 @@ void Bank::make_withdrawal(int& accountNumber, double& amt, string &dt)
 		}
 }
 
+// Gets an account based on user inputted account number
 Account* Bank::get_account(int& accountNumber) 
 {
 		if (accountNumber >= 0 and accountNumber <= (int)accounts.size() - 1) {
