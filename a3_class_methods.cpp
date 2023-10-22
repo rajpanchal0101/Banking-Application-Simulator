@@ -6,7 +6,7 @@
 */
 #include "a3_header.h"
 
-// Initialize transaction data
+//! Initialize transaction data
 Transaction::Transaction(string type, double& amt, double& bal, Date& dt) 
 {
 		tran_type = type;
@@ -15,39 +15,39 @@ Transaction::Transaction(string type, double& amt, double& bal, Date& dt)
 		date = dt;
 }
 
-// Get the transaction type
+//! Get the transaction type
 string Transaction::get_tran_type() 
 {
 		return tran_type;
 }
 
-// Default constructor for Transaction class	
+//! Default constructor for Transaction class	
 Transaction::Transaction() 
-{       // Initialize properties with default values
+{       //! Initialize properties with default values
 		tran_type = "";
 		amount = 0.0;
 		balance = 0.0;
 }
 
-// Get the date of the transaction
+//! Get the date of the transaction
 Date Transaction::get_date() 
 {
 		return date;
 }
 
-// Get the transaction amount
+//! Get the transaction amount
 double Transaction::get_amount()
  {
 		return amount;
  }
 
-// Get the account balance after the transaction
+//! Get the account balance after the transaction
 double Transaction::get_balance() 
 {
 		return balance;
 }
 
-// Convert Transaction object to a formatted string
+//! Convert Transaction object to a formatted string
 string Transaction::to_string() 
 {
 		stringstream t;
@@ -58,10 +58,10 @@ string Transaction::to_string()
 		return t.str();
 }
 
-// Customer class constructor
+//! Customer class constructor
 Customer::Customer(string& name_, string& address_, string& customer_type_ ,int& age_, string& telephone_number_, int& customer_number_) 
 {
-	        // Initialize customer properties
+	        //! Initialize customer properties
 			name = name_;
 			address = address_;
 			customer_type = customer_type_; 
@@ -71,169 +71,169 @@ Customer::Customer(string& name_, string& address_, string& customer_type_ ,int&
 }
 
 	
-// Set the customer type
+//! Set the customer type
 void Customer::set_customer_type(string& customer_type)
 {
 			this->customer_type = customer_type;
 }
 
-// Get the customer's name
+//! Get the customer's name
 string Customer::get_name()
 {
 			return name;
 }
 
-// Get the customer's address
+//! Get the customer's address
 string Customer::get_address()
 {
 			return address;
 }
 
-// Get the customer's type
+//! Get the customer's type
 string Customer::get_customer_type()
 {
 			return customer_type;
 }
 
-// Get the customer's age
+//! Get the customer's age
 int Customer::get_age()
 {
 			return age;
 }
 
-// Get the customer's telephone number
+//! Get the customer's telephone number
 string Customer::get_telephone_number() 
 {
 			return telephone_number;
 }
 
-// Get the customer number
+//! Get the customer number
 int Customer::get_customer_number()
 {
 			return customer_number;
 }
 
-// Senior class constructor
+//! Senior class constructor
 Senior::Senior(string& name_, string& address_, string& customer_type_, int& age_, string& telephone_number_, int& customer_number_) : Customer(name_, address_, customer_type_, age_, telephone_number_, customer_number_)
  {}
 	
-// Get the savings account interest for senior customers
+//! Get the savings account interest for senior customers
 double Senior::get_sav_int()
  { return SAVINGS_INTEREST; }
 
- // Get the checking account interest for senior customers
+ //! Get the checking account interest for senior customers
 double Senior::get_chec_int() 
 { return CHECK_INTEREST; }
 
-// Get the checking account charges for senior customers
+//! Get the checking account charges for senior customers
 double Senior::get_chec_chrg() 
 { return CHECK_CHARGE; }
 
-// Get the overdraft penalty for senior customers
+//! Get the overdraft penalty for senior customers
 int Senior::get_od_plty() 
 { return OVERDRAFT_PENALTY; }
 
 
-// Adult class constructor
+//! Adult class constructor
 Adult::Adult(string& name_, string& address_, string& customer_type_, int& age_, string& telephone_number_, int& customer_number_) : Customer(name_, address_, customer_type_, age_, telephone_number_, customer_number_) 
 {}
 	
-// Get the savings account interest for adult customers
+//! Get the savings account interest for adult customers
 double Adult::get_sav_int() 
 { return SAVINGS_INTEREST; }
 
-// Get the checking account interest for adult customers
+//! Get the checking account interest for adult customers
 double Adult::get_chec_int()
  { return CHECK_INTEREST; }
 
- // Get the checking account charges for adult customers
+ //! Get the checking account charges for adult customers
 double Adult::get_chec_chrg() 
 { return CHECK_CHARGE; }
 
-// Get the overdraft penalty for adult customers
+//! Get the overdraft penalty for adult customers
 int Adult::get_od_plty()
  { return OVERDRAFT_PENALTY; }
 
-// Student class constructor
+//! Student class constructor
 Student::Student(string& name_, string& address_, string& customer_type_, int& age_, string& telephone_number_, int& customer_number_) : Customer(name_, address_, customer_type_, age_, telephone_number_, customer_number_) 
 {}
 
-// Get the savings account interest for student customers
+//! Get the savings account interest for student customers
 double Student::get_sav_int() 
 { return SAVINGS_INTEREST; }
 
-// Get the checking account interest for student customers
+//! Get the checking account interest for student customers
 double Student::get_chec_int()
  { return CHECK_INTEREST; }
 
-// Get the checking account charges for student customers
+//! Get the checking account charges for student customers
 double Student::get_chec_chrg() 
 { return CHECK_CHARGE; }
 
-// Get the overdraft penalty for student customers
+//! Get the overdraft penalty for student customers
 int Student::get_od_plty()
  { return OVERDRAFT_PENALTY; }
 
-// Account class constructor
+//! Account class constructor
 Account::Account(int &acc_num,string &acc_type)
 {
-	    // Initialize account properties
+	    //! Initialize account properties
 		balance = 0.0;
 		account_number = acc_num;
 		account_type = acc_type;
 		transac_count = 0;
 }
 
-// Get the account type
+//! Get the account type
 string Account::get_account_type()
 {
 		return account_type;
 }
 
-// Set the balance for the account
+//! Set the balance for the account
 void Account::set_balance(double& bal) 
 {
 		balance = bal;
 }
 
-// Get the account number
+//! Get the account number
 int Account::get_account_number() 
 {
 		return account_number;
 }
 
-// Get the account balance
+//! Get the account balance
 double Account::get_balance()
 {
 		return balance;
 }
 
-// Set the customer associated with the account
+//! Set the customer associated with the account
 void Account::set_customer(Customer *customer_) 
 {
 		customer = customer_;
 }
 
 
-// Get the customer associated with the account
+//! Get the customer associated with the account
 Customer* Account::get_customer()
 {
 		return customer;
 }
 
-// Add a transaction to the account
+//! Add a transaction to the account
 void Account::add_trans(Transaction *tran) 
 {
 		trans.push_back(tran);
 }
 
-// Get the list of transactions for the account
+//! Get the list of transactions for the account
 vector<Transaction*> Account::get_trans() 
 {
 		return trans;
 }
 
-// Convert Account object to a formatted string
+//! Convert Account object to a formatted string
 string Account::to_string() const
 {       stringstream str;
         str << "Account : " << account_number << endl
@@ -245,18 +245,18 @@ string Account::to_string() const
 }
 
 
-// Savings_Account class constructor
+//! Savings_Account class constructor
 Savings_Account::Savings_Account(int& acc_num, string& acc_type) : Account(acc_num, acc_type) 
 {       
-	    // Initialize savings account properties
+	    //! Initialize savings account properties
 		balance = 0;
 		l_trans_date = nullptr;
 }
 
-// Deposit money into a savings account
+//! Deposit money into a savings account
 double Savings_Account::deposit(double amt, Date date) 
 {
-        // Checks if the transaction date is valid
+        //! Checks if the transaction date is valid
 		if (!get_trans().empty()) { 
 			l_trans_date = get_trans().back();
 			l_date = l_trans_date->get_date();
@@ -272,7 +272,7 @@ double Savings_Account::deposit(double amt, Date date)
 		return balance;
 }
     
-// Add interest to the savings account
+//! Add interest to the savings account
 void Savings_Account::add_interest()
  {
 		time_t now = time(0);
@@ -288,7 +288,7 @@ void Savings_Account::add_interest()
 		add_trans(new Transaction("INT CR", interest_amt, balance, date));
 }
 
-// Withdraw money from a savings account
+//! Withdraw money from a savings account
 double Savings_Account::withdrawal(double amt,Date date) 
 {
 		balance = get_balance();
@@ -320,17 +320,17 @@ double Savings_Account::withdrawal(double amt,Date date)
 }
 
 
-// Checking_Account class constructor
+//! Checking_Account class constructor
 Checking_Account::Checking_Account( int& acc_num, string& acc_type) : Account( acc_num, acc_type)
 {       
-	    // Initialize checking account properties
+	    //! Initialize checking account properties
 		balance = 0;
 		l_trans_date = nullptr;
 		
 }
 
 
-// Deposit money into a checking account
+//! Deposit money into a checking account
 double Checking_Account::deposit(double amt, Date date) 
 {
 		if (!get_trans().empty()) {
@@ -348,7 +348,7 @@ double Checking_Account::deposit(double amt, Date date)
 		return balance;
 }
 
-// Add interest to the checking account
+//! Add interest to the checking account
 void Checking_Account::add_interest()
 {
 		time_t now = time(0);
@@ -364,7 +364,7 @@ void Checking_Account::add_interest()
 		add_trans(new Transaction("INT CR", interest_amt, balance, date));
 }
 
-// Withdraw money from a checking account
+//! Withdraw money from a checking account
 double Checking_Account::withdrawal(double amt, Date date) 
 {
 		balance = get_balance();
@@ -395,10 +395,10 @@ double Checking_Account::withdrawal(double amt, Date date)
 		}
 }
 
-// Bank class constructor
+//! Bank class constructor
 Bank::Bank() 
 {       
-	    // Initialize bank properties
+	    //! Initialize bank properties
 		accountNumber = -1;
 		customerNumber = -1;
 		day = 0;
@@ -408,10 +408,10 @@ Bank::Bank()
 		
 }
 
-// Add a new customer account
+//! Add a new customer account
 int Bank::add_account(string& name, string& address, string& telephoneNumber, int& age, int& accType, int& custType)
 {
-        // Create a new account based on customer and account type
+        //! Create a new account based on customer and account type
 		Account* newAccount = nullptr;
 		string cust_type, accountType;
 		customerNumber++;
@@ -445,16 +445,16 @@ int Bank::add_account(string& name, string& address, string& telephoneNumber, in
 		}
 }
 
-// Make a withdrawal from a specific account
+//! Make a withdrawal from a specific account
 void Bank::make_withdrawal(int& accountNumber, double& amt, string &dt) 
 {       
-	    // Parse the date and create a Date object
+	    //! Parse the date and create a Date object
 		month = stoi(dt.substr(5, 2));
 		day = stoi(dt.substr(8, 2));
 		year = stoi(dt.substr(0, 4));
 		Date date(day, month, year);
 
-		// Check if the account number is valid
+		//! Check if the account number is valid
 		if (accountNumber >= 0 and accountNumber <= (int)accounts.size() - 1) {
 			double balance = accounts[accountNumber]->withdrawal(amt, date);
 			if (balance != -1)
@@ -469,10 +469,10 @@ void Bank::make_withdrawal(int& accountNumber, double& amt, string &dt)
 		}
 }
 
-// Gets an account based on user inputted account number
+//! Gets an account based on user inputted account number
 Account* Bank::get_account(int& accountNumber) 
 {       
-	    // Checks if the account number is valid
+	    //! Checks if the account number is valid
 		if (accountNumber >= 0 and accountNumber <= (int)accounts.size() - 1) {
 			time_t now = time(0);
 			Date date(now);
@@ -491,17 +491,17 @@ Account* Bank::get_account(int& accountNumber)
 }
 
 
-// Make a deposit into a specific account
+//! Make a deposit into a specific account
 void Bank::make_deposit(int &accountNumber, double &amt,string &dt) 
 {
 
-	    // Parse the date and create a Date object
+	    //! Parse the date and create a Date object
 		month = stoi(dt.substr(5, 2));
 		day = stoi(dt.substr(8, 2));
 		year = stoi(dt.substr(0, 4));
 		Date date(day,month,year);
 
-		// Check if the account number is valid
+		//! Check if the account number is valid
 		if (accountNumber >= 0 and accountNumber <= (int)accounts.size() - 1) {
 			double balance = accounts[accountNumber]->deposit(amt, date);
 			if (balance != -1) {
@@ -516,10 +516,10 @@ void Bank::make_deposit(int &accountNumber, double &amt,string &dt)
 }
 
 
-// Application class constructor
+//! Application class constructor
 Application::Application() 
 {
-	    // Initialize application properties
+	    //! Initialize application properties
 		accountNumber = -1;
 		choice = -1;
 		cust_type = -1;
@@ -534,7 +534,7 @@ Application::Application()
 		
 }
 
-// Runs the application
+//! Runs the application
 void Application::action() 
 {
 		while (true)
