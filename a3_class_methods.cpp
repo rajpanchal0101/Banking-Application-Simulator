@@ -471,7 +471,8 @@ void Bank::make_withdrawal(int& accountNumber, double& amt, string &dt)
 
 // Gets an account based on user inputted account number
 Account* Bank::get_account(int& accountNumber) 
-{
+{       
+	    // Checks if the account number is valid
 		if (accountNumber >= 0 and accountNumber <= (int)accounts.size() - 1) {
 			time_t now = time(0);
 			Date date(now);
@@ -489,12 +490,18 @@ Account* Bank::get_account(int& accountNumber)
 		}
 }
 
+
+// Make a deposit into a specific account
 void Bank::make_deposit(int &accountNumber, double &amt,string &dt) 
 {
+
+	    // Parse the date and create a Date object
 		month = stoi(dt.substr(5, 2));
 		day = stoi(dt.substr(8, 2));
 		year = stoi(dt.substr(0, 4));
 		Date date(day,month,year);
+
+		// Check if the account number is valid
 		if (accountNumber >= 0 and accountNumber <= (int)accounts.size() - 1) {
 			double balance = accounts[accountNumber]->deposit(amt, date);
 			if (balance != -1) {
@@ -509,9 +516,10 @@ void Bank::make_deposit(int &accountNumber, double &amt,string &dt)
 }
 
 
-
+// Application class constructor
 Application::Application() 
 {
+	    // Initialize application properties
 		accountNumber = -1;
 		choice = -1;
 		cust_type = -1;
@@ -526,6 +534,7 @@ Application::Application()
 		
 }
 
+// Runs the application
 void Application::action() 
 {
 		while (true)
