@@ -3,7 +3,7 @@
 #include <math.h>
 #include <vector>
 #include "Date.h"
- 
+  
 using namespace std;
 
 class Transaction {
