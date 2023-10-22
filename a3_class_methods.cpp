@@ -71,135 +71,173 @@ Customer::Customer(string& name_, string& address_, string& customer_type_ ,int&
 }
 
 	
-
+// Set the customer type
 void Customer::set_customer_type(string& customer_type)
 {
 			this->customer_type = customer_type;
 }
 
+// Get the customer's name
 string Customer::get_name()
 {
 			return name;
 }
+
+// Get the customer's address
 string Customer::get_address()
 {
 			return address;
 }
+
+// Get the customer's type
 string Customer::get_customer_type()
 {
 			return customer_type;
 }
+
+// Get the customer's age
 int Customer::get_age()
 {
 			return age;
 }
+
+// Get the customer's telephone number
 string Customer::get_telephone_number() 
 {
 			return telephone_number;
 }
+
+// Get the customer number
 int Customer::get_customer_number()
 {
 			return customer_number;
 }
 
-
+// Senior class constructor
 Senior::Senior(string& name_, string& address_, string& customer_type_, int& age_, string& telephone_number_, int& customer_number_) : Customer(name_, address_, customer_type_, age_, telephone_number_, customer_number_)
  {}
 	
-
+// Get the savings account interest for senior customers
 double Senior::get_sav_int()
  { return SAVINGS_INTEREST; }
+
+ // Get the checking account interest for senior customers
 double Senior::get_chec_int() 
 { return CHECK_INTEREST; }
+
+// Get the checking account charges for senior customers
 double Senior::get_chec_chrg() 
 { return CHECK_CHARGE; }
+
+// Get the overdraft penalty for senior customers
 int Senior::get_od_plty() 
 { return OVERDRAFT_PENALTY; }
 
 
+// Adult class constructor
 Adult::Adult(string& name_, string& address_, string& customer_type_, int& age_, string& telephone_number_, int& customer_number_) : Customer(name_, address_, customer_type_, age_, telephone_number_, customer_number_) 
 {}
 	
-
+// Get the savings account interest for adult customers
 double Adult::get_sav_int() 
 { return SAVINGS_INTEREST; }
+
+// Get the checking account interest for adult customers
 double Adult::get_chec_int()
  { return CHECK_INTEREST; }
+
+ // Get the checking account charges for adult customers
 double Adult::get_chec_chrg() 
 { return CHECK_CHARGE; }
+
+// Get the overdraft penalty for adult customers
 int Adult::get_od_plty()
  { return OVERDRAFT_PENALTY; }
 
-
+// Student class constructor
 Student::Student(string& name_, string& address_, string& customer_type_, int& age_, string& telephone_number_, int& customer_number_) : Customer(name_, address_, customer_type_, age_, telephone_number_, customer_number_) 
 {}
 
-
+// Get the savings account interest for student customers
 double Student::get_sav_int() 
 { return SAVINGS_INTEREST; }
+
+// Get the checking account interest for student customers
 double Student::get_chec_int()
  { return CHECK_INTEREST; }
+
+// Get the checking account charges for student customers
 double Student::get_chec_chrg() 
 { return CHECK_CHARGE; }
+
+// Get the overdraft penalty for student customers
 int Student::get_od_plty()
  { return OVERDRAFT_PENALTY; }
 
-
+// Account class constructor
 Account::Account(int &acc_num,string &acc_type)
 {
+	    // Initialize account properties
 		balance = 0.0;
 		account_number = acc_num;
 		account_type = acc_type;
 		transac_count = 0;
 }
 
+// Get the account type
 string Account::get_account_type()
 {
 		return account_type;
 }
 
+// Set the balance for the account
 void Account::set_balance(double& bal) 
 {
 		balance = bal;
 }
 
-
+// Get the account number
 int Account::get_account_number() 
 {
 		return account_number;
-	}
+}
 
-double Account::get_balance() {
+double Account::get_balance()
+{
 		return balance;
-	}
+}
 
-void Account::set_customer(Customer *customer_) {
+void Account::set_customer(Customer *customer_) 
+{
 		customer = customer_;
-	}
+}
 
 
 
-Customer* Account::get_customer() {
+Customer* Account::get_customer()
+{
 		return customer;
-	}
+}
 
-void Account::add_trans(Transaction *tran) {
+void Account::add_trans(Transaction *tran) 
+{
 		trans.push_back(tran);
-	}
+}
 
-vector<Transaction*> Account::get_trans() {
+vector<Transaction*> Account::get_trans() 
+{
 		return trans;
-	}
+}
 
 string Account::to_string() const
-	{   stringstream str;
+{       stringstream str;
         str << "Account : " << account_number << endl
 		 << "Owner : " << customer->get_name() << endl
 		 << "Type of customer : " << customer->get_customer_type() << endl
 		 << "Balance : " << fixed << setprecision(3) << balance << endl;
 
 		 return str.str();
-	}
+}
 
 
 
