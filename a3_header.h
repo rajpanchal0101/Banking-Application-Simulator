@@ -242,7 +242,7 @@ public:
 };
 
 
-
+//! Defining a derived class for Adult customers.
 class Adult : public Customer 
 {
 
@@ -294,6 +294,7 @@ public:
 	int get_od_plty();
 };
 
+//! Defining a derived class for Student customers.
 class Student :public Customer 
 {
 
@@ -345,7 +346,7 @@ public:
 	int get_od_plty();
 };
 
-
+//! Defining a class for managing accounts.
 class Account 
 {
 private:
@@ -411,7 +412,7 @@ public:
     
 	/**
 	1) Purpose: Abstract function to add interest to the account
-	2) Parameters: 
+	2) Parameters: None
 	3) Return type: void
 	4) Side Effect: None
 	*/
@@ -458,89 +459,183 @@ public:
 	vector<Transaction*> get_trans();
     
 	/**
-	1) Purpose: Gets a list of transactions
+	1) Purpose: Convert the account information to a formatted string
 	2) Parameters: None
-	3) Return type: vector
+	3) Return type: string
 	4) Side Effect: None
 	*/
 	string to_string() const;
 
 };
 
-class Savings_Account :public Account {
+//! Defining a derived class for managing savings accounts.
+class Savings_Account :public Account 
+{
 private:
-    Date l_date;
+
+    Date l_date; //! Last transaction date
 	double balance;
 	Transaction* l_trans_date;
 
 public:
+    
+	/**
+	1) Purpose: Constructor to initialize an account based on its type with relevant information.
+	2) Parameters: acc_num(int), acc_type(string)
+	3) Return type: None
+	4) Side Effect: None
+	*/
 	Savings_Account(int& acc_num, string& acc_type);
 
+    /**
+	1) Purpose: function to add deposit to the account
+	2) Parameters: amt(double), date(Date)
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	double deposit(double amt, Date date);
     
+	/**
+	1) Purpose: function to add interest to the account
+	2) Parameters: None
+	3) Return type: void
+	4) Side Effect: None
+	*/
 	void add_interest();
 
-
+    /**
+	1) Purpose: function to perform withdrawal from the account
+	2) Parameters: amt(double), date(Date)
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	double withdrawal(double amt,Date date);
 };
 
-class Checking_Account :public Account {
+
+//! Defining a derived class for managing checking accounts.
+class Checking_Account :public Account 
+{
 private:
 
-	Date l_date;
+	Date l_date; //! Last transaction date
 	double balance;
 	Transaction* l_trans_date;
 	
 
 public:
+    
+	/**
+	1) Purpose: Constructor to initialize an account based on its type with relevant information.
+	2) Parameters: acc_num(int), acc_type(string)
+	3) Return type: None
+	4) Side Effect: None
+	*/
 	Checking_Account( int& acc_num, string& acc_type);
 
-
+    /**
+	1) Purpose: function to add deposit to the account
+	2) Parameters: amt(double), date(Date)
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	double deposit(double amt, Date date);
-
+    
+	/**
+	1) Purpose: function to add interest to the account
+	2) Parameters: None
+	3) Return type: void
+	4) Side Effect: None
+	*/
 	void add_interest();
-
+    
+	/**
+	1) Purpose: function to perform withdrawal from the account
+	2) Parameters: amt(double), date(Date)
+	3) Return type: double
+	4) Side Effect: None
+	*/
 	double withdrawal(double amt, Date date);
 };
 
-class Bank {
+//! Defining a class for different operations related to bank.
+class Bank
+{
 private:
-	vector<Account*> accounts;
+
+	vector<Account*> accounts; //! List of bank accounts
 	int customerNumber;
-	Customer* customer;
+	Customer* customer; //! Current customer
 	int day, month, year;
 	int accountNumber;
 
 public:
-	Bank();
-
+	Bank(); //! Constructor for initializing variables.
+    
+	/**
+	1) Purpose: function to add an account based on user inputted values.
+	2) Parameters: name_(string), address_(string), custType(int), age(int), telephoneNumber(string)
+	3) Return type: int
+	4) Side Effect: None
+	*/
 	int add_account(string& name, string& address, string& telephoneNumber, int& age, int& accType, int& custType);
 
-
+    /**
+	1) Purpose: function to perform withdrawal from the account
+	2) Parameters: accountNumber(int), amt(double), dt(string)
+	3) Return type: void
+	4) Side Effect: None
+	*/
 	void make_withdrawal(int& accountNumber, double& amt, string &dt);
-
+    
+	/**
+	1) Purpose: function to Get an account based on user inputted account number
+	2) Parameters: accountNumber(int)
+	3) Return type: None
+	4) Side Effect: None
+	*/
 	Account* get_account(int& accountNumber);
-
+    
+	/**
+	1) Purpose: function to add deposit to the account
+	2) Parameters: accountNumber(int), amt(double), dt(string)
+	3) Return type: void
+	4) Side Effect: None
+	*/
 	void make_deposit(int &accountNumber, double &amt,string &dt);
 
 };
 
+//! Defining a class for interacting with the user.
 class Application 
 {
 private:
-    Account* account;
-	Customer* customer;
+   
+    Account* account; //! Current account
+	Customer* customer; //! Current customer
 	int choice,cust_type,accountType,accountNumber;
 	int age;
-	Bank * bank;
-	vector<Transaction*> trans;
+	Bank * bank; //! Bank object
+	vector<Transaction*> trans; //! List of transactions
 	string name, address,date, telephoneNumber;
-	double amount;
+	double amount; //! Transaction amount
 	
 	
 
 public:
+    /**
+	1) Purpose: Constructor to initialize the application
+	2) Parameters: None
+	3) Return type: None
+	4) Side Effect: None
+	*/
 	Application();
-
+    
+	/**
+	1) Purpose: It is the main application function
+	2) Parameters: None
+	3) Return type: void
+	4) Side Effect: None
+	*/
 	void action();
 };
