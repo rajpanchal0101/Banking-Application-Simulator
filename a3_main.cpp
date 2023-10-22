@@ -3,7 +3,7 @@
 #include <math.h>
 #include <vector>
 #include "Date.h"
-  
+
 using namespace std;
 
 class Transaction {
@@ -14,7 +14,8 @@ private:
 	
 
 public:
-	Transaction(string type, double& amt, double& bal, Date& dt) {
+	Transaction(string type, double& amt, double& bal, Date& dt) 
+	{
 		transaction_type = type;
 		amount = amt;
 		balance = bal;
