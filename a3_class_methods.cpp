@@ -1,6 +1,12 @@
+/**
+1) Module Name: a3_class_methods.cpp
+2) Author: Raj Panchal (rjp659@uregina.ca)
+3) Date of creation: 2023-10-22
+4) Purpose:This is the file which consists of implementation of the various functions declared in the header file inside different classes.
+*/
 #include "a3_header.h"
 
-
+// Initialize transaction data
 Transaction::Transaction(string type, double& amt, double& bal, Date& dt) 
 {
 		tran_type = type;
@@ -9,11 +15,13 @@ Transaction::Transaction(string type, double& amt, double& bal, Date& dt)
 		date = dt;
 }
 
+// Get the transaction type
 string Transaction::get_tran_type() 
 {
 		return tran_type;
 }
-	
+
+// Default constructor for Transaction class	
 Transaction::Transaction() 
 {
 		tran_type = "";
@@ -237,7 +245,7 @@ double Savings_Account::withdrawal(double amt,Date date)
 			l_trans_date = get_trans().back();
 			l_date = l_trans_date->get_date();
 			if (date < l_date or date > l_date) {
-				cout << "Past or future dates are not allowed." << endl;
+				cout << "Dates in past or future are not accepted. Try again after entering a valid date." << endl;
 				return -1;
 			}
 		}
@@ -276,7 +284,7 @@ double Checking_Account::deposit(double amt, Date date)
 			l_trans_date = get_trans().back();
 			l_date = l_trans_date->get_date();
 			if (date < l_date or date > l_date) {
-				cout << "Past or future dates are not allowed." << endl;
+				cout << "Dates in past or future are not accepted. Try again after entering a valid date." << endl;
 				return -1;
 			}
 		}
@@ -309,7 +317,7 @@ double Checking_Account::withdrawal(double amt, Date date)
 			l_trans_date = get_trans().back();
 			l_date = l_trans_date->get_date();
 			if (date < l_date or date > l_date) {
-				cout << "Past or future dates are not allowed." << endl;
+				cout << "Dates in past or future are not accepted. Try again after entering a valid date." << endl;
 				return -1;
 			}
 		}
