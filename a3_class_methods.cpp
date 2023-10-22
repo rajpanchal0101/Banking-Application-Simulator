@@ -23,29 +23,31 @@ string Transaction::get_tran_type()
 
 // Default constructor for Transaction class	
 Transaction::Transaction() 
-{
+{       // Initialize properties with default values
 		tran_type = "";
 		amount = 0.0;
 		balance = 0.0;
 }
 
-
+// Get the date of the transaction
 Date Transaction::get_date() 
 {
 		return date;
 }
 
-
+// Get the transaction amount
 double Transaction::get_amount()
  {
 		return amount;
  }
 
+// Get the account balance after the transaction
 double Transaction::get_balance() 
 {
 		return balance;
 }
 
+// Convert Transaction object to a formatted string
 string Transaction::to_string() 
 {
 		stringstream t;
@@ -56,9 +58,10 @@ string Transaction::to_string()
 		return t.str();
 }
 
-
+// Customer class constructor
 Customer::Customer(string& name_, string& address_, string& customer_type_ ,int& age_, string& telephone_number_, int& customer_number_) 
 {
+	        // Initialize customer properties
 			name = name_;
 			address = address_;
 			customer_type = customer_type_; 
@@ -142,23 +145,27 @@ int Student::get_od_plty()
  { return OVERDRAFT_PENALTY; }
 
 
-Account::Account(int &acc_num,string &acc_type) {
+Account::Account(int &acc_num,string &acc_type)
+{
 		balance = 0.0;
 		account_number = acc_num;
 		account_type = acc_type;
 		transac_count = 0;
-	}
+}
 
-string Account::get_account_type() {
+string Account::get_account_type()
+{
 		return account_type;
-	}
+}
 
-void Account::set_balance(double& bal) {
+void Account::set_balance(double& bal) 
+{
 		balance = bal;
-	}
+}
 
 
-int Account::get_account_number() {
+int Account::get_account_number() 
+{
 		return account_number;
 	}
 
