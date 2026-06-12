@@ -1,62 +1,34 @@
-# CS700 - Assignment 3 - Banking Application Simulator
+# Banking Application Simulator
 
-*Description - This assignment consists of building a simplified version of banking application for managing bank accounts and transactions. Below is the detailed description of  each and every file:
+A simple banking application for managing bank accounts and transactions. Supports creating savings and checking accounts, making deposits and withdrawals, and viewing account details with transaction history.
 
-Files:
+## Tech Used
 
-1. **a3_header.h** :
-      - Description: It is the header file.
-      - Functionality: This header file contains the declarations of various classes used in the application, such as `Transaction`, `Customer`, `Account`, `Savings_Account`, `Checking_Account`, and `Bank`. It is included in "a3_class_methods.cpp".
+- C++
 
-2. **a3_main.cpp** :
-      - Description: It is the main program file.
-      - Functionality: This is the main entry point of the application. It creates an instance of the `Application` class and starts the application.
+## Files
 
-3. **a3_class_methods.cpp** : 
-      - Description: It is the implementation file.
-      - Functionality: This file contains the implementation of the classes declared in `a3_header.h`. It includes member function definitions for these classes. It is included in the "a3_main.cpp".
+| File | Description |
+|------|-------------|
+| `a3_header.h` | Header file with class declarations (`Transaction`, `Customer`, `Account`, `Savings_Account`, `Checking_Account`, `Bank`, `Application`). Included in `a3_class_methods.cpp`. |
+| `a3_main.cpp` | Entry point — creates an `Application` instance and starts the program. |
+| `a3_class_methods.cpp` | Implements all class member functions declared in the header. Included in `a3_main.cpp`. |
+| `Date.h` | Utility header for date-related operations. Included in `a3_header.h`. |
+| `a3_executable.exe` | Pre-built executable binary. |
 
-4. **a3_executable.exe** : 
-      - Description: Executable binary for "a3_main.cpp".
+## Class Overview
 
-5. **a3_screenshot_console_output_using_terminal.JPG** : 
-      - Description: Screenshot of console output and program execution using terminal.
-     
-6. **a3_screenshot_console_output_1.JPG** : 
-      - Description: Screenshot of the console output consisting of the functionality of adding the account, making deposit, making withdrawal and checking the account and few validations as well for transaction dates.
+- **Transaction** — Represents a bank transaction (type, amount, balance, date).
+- **Customer** — Stores customer details (name, address, age, telephone, customer number).
+- **Account** — Base class for bank accounts with deposit, withdrawal, and interest calculation.
+- **Savings_Account / Checking_Account** — Derived account types.
+- **Bank** — Manages customer accounts and provides methods for deposits and withdrawals.
+- **Application** — Interactive menu for the user to add accounts, make deposits/withdrawals, and check details.
 
-7. **a3_screenshot_console_output_2.JPG** :
-     - Description: Screenshot of the console output consisting of the functionality of adding the account, making deposit, making withdrawal and checking the account and few validations as well for transaction dates.
+## How to Build & Run
 
-8. **a3_screenshot_IDE_integrated_version_control.JPG** : 
-      - Description: Screenshot of IDE integrated version control simulation for the assignment  .
+```bash
+g++ a3_main.cpp -o banking && ./banking
+```
 
-9. **a3_screenshot_terminal_git_commands_.JPG** : Screenshot of terminal with Git commands for this program.
-       - Description: Screenshot of terminal with Git commands for adding, commiting and pushing various files of  assignment 3 to github.
-
-10. **Date.h** :
-      - Description: It is a file already included in the assignment for any date related operation.
-      - Functionality: It has various functions for fetching current dates and for performing any date related operation. It is included in the "a3_header.h".
-
-
-## Class Descriptions
-
-- **Transaction**: Represents a bank transaction with details such as transaction type, amount, balance, and date.
-
-- **Customer**: Represents a bank customer with details like name, address, age, customer type, telephone number, and customer number.
-
-- **Account**: Base class for different types of bank accounts, such as savings and checking accounts. It includes functions for deposit, withdrawal, and calculating interest.
-
-- **Savings_Account**: Derived from `Account`, represents a savings account.
-
-- **Checking_Account**: Derived from `Account`, represents a checking account.
-
-- **Bank**: Manages customer accounts and provides methods for adding accounts, making deposits, and withdrawals.
-
-- **Application**: The main application class that interacts with the user. It provides a menu to add accounts, make deposits, withdrawals, and check account details.
-
-
->Note : For Doxygen to extract the comments, * and ! have been appended after standard comment syntax.
-
-
->GitHub Repository Link (CS700_Assignment 3): https://github.com/rajpanchal0101/CS700_Assignment3
+Or run `a3_executable.exe` directly on Windows.
